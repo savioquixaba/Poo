@@ -64,7 +64,8 @@ public class JogoDaForca {
 			
 			if(letra.length() > 1) {
 				throw new Exception("Digite uma letra por vez.");
-			}
+			}else if (letra.matches("[0-9]")){
+			 	throw new Exception("Digite um caractere não numérico.");
 			
 			ArrayList<Integer> posicoes = new ArrayList<>();
 			
