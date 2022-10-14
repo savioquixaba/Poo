@@ -1,0 +1,136 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+public class InterfacePoo extends JFrame implements ActionListener {
+
+	
+	public void setText (JTextField text) {
+		this.textField = text;
+	}
+	
+	public String getPassword(){
+		return this.passwordField;
+	}
+	
+	
+	private static final long serialVersionUID = 1L;
+	private JTextField textField; 
+	private JFrame frame;
+	private JLabel label;
+	@SuppressWarnings("unused")
+	private String JtextField;
+	private JButton button;
+	private JButton button_1;
+	private String passwordField;
+	private JLabel label_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					InterfacePoo window = new InterfacePoo();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public InterfacePoo() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	@SuppressWarnings("unused")
+	private void initialize() {
+		frame = new JFrame();
+		frame.setTitle("Login");
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		label = new JLabel("Senha");
+		label.setSize(new Dimension(37, 37));
+		label.setBounds(195, 68, 33, 28);
+		frame.getContentPane().add(label);
+		JPasswordField passField = new JPasswordField("ifpb");
+		
+		String texto = new String(passField.getPassword());
+		
+		
+		textField = new JTextField();
+		textField.setBounds(152, 106, 110, 28);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		
+		
+		button = new JButton("Ok");
+		button.addActionListener(new ActionListener() { //* action -> objeto */ 
+
+
+			public void actionPerformed(ActionEvent arg0) {
+				String senha = new String(getPassword());
+				if (senha.equals("ifpb")) {
+					Color Foreground = (Color.GREEN);
+					label_1.setText("Senha Correta");
+					
+				} else {  
+					Color Foreground = (Color.RED);
+					label_1.setText("Tente Novamente");
+					textField.setText("");
+					textField.requestFocus();
+					
+				}
+				
+				
+			}
+		});
+		
+		
+		
+		button.setBounds(90, 144, 92, 28);
+		frame.getContentPane().add(button);
+		
+		button_1 = new JButton("Sair");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button_1.setBounds(229, 144, 92, 28);
+		frame.getContentPane().add(button_1);
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String getJTextField() {
+		return JtextField;
+	}
+
+	public void setJTextField(String jTextField) {
+		JtextField = jTextField; 
+	}
+}
